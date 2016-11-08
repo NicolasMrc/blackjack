@@ -15,7 +15,7 @@ public class BlackJackConsole {
 
         Hand hand = new Hand();
 
-        for(int i = 0; i < 3 ; i++) {
+        for(int i = 0; i < 6 ; i++) {
             try {
                 hand.add(deck.draw());
             } catch (EmptyDeckException e) {

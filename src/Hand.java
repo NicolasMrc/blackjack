@@ -26,8 +26,6 @@ public class Hand {
             }
         }
         hand += "]";
-        hand += "\nThe best score is : " + this.best();
-
         return hand;
     }
 
