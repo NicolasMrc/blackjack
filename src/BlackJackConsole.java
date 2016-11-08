@@ -1,3 +1,4 @@
+import java.util.List;
 
 /**
  * Created by Nico on 07/11/2016.
@@ -21,10 +22,7 @@ public class BlackJackConsole {
                 System.exit(-1);
             }
         }
-        System.out.println("Your hand is currently : \n" + hand);
-        hand.clear();
-        System.out.println("Your hand is currently : \n" + hand);
-
+        System.out.print("Your hand is currently : \n" + hand);
     }
 
     public static void main(String[] args){
