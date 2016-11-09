@@ -46,19 +46,19 @@ public class BlackJack {
     }
 
     public boolean isPlayerWinner(){
-        if(this.getPlayerBest() <= 21 && (this.getBankBest() < this.getPlayerBest() || this.getBankBest() > 21)){
+        if(this.getPlayerBest() <= 21 && ((this.getBankBest() < this.getPlayerBest() && (this.getBankBest() != 21 && this.getPlayerBest() != 21)) || this.getBankBest() > 21)){
             return true;
         } else return false;
     }
 
     public boolean isBankWinner(){
-        if(this.getBankBest() <= 21 && (this.getPlayerBest() < this.getBankBest() || this.getPlayerBest() > 21)){
+        if(this.getBankBest() <= 21 && ((this.getPlayerBest() < this.getBankBest() && (this.getPlayerBest() != 21 && this.getBankBest() != 21)) || this.getPlayerBest() > 21)){
             return true;
         } else return false;
     }
 
     public boolean isGameFinished(){
-        if(this.getBankBest() > 21 || this.getPlayerBest() > 21){
+        if(this.gameFinished){
             return true;
         } else {
             return false;
@@ -78,16 +78,19 @@ public class BlackJack {
     }
 
     public void bankLastTurn(){
-        if(!this.gameFinished && !this.isBankWinner() && !this.isPlayerWinner()){
-            while(isPlayerWinner()){
+        if(!this.gameFinished){
+            while(!this.isGameFinished()){
                 try{
                     this.bankHand.add(this.deck.draw());
+                    System.out.println("The bank draw : " + this.getBankHandString());
                 } catch (EmptyDeckException e){
                     System.out.println("Error, the deck has insuffisent cards");
                     System.exit(-1);
                 }
+                if(this.isBankWinner() || this.getBankBest() > 21){
+                    this.gameFinished = true;
+                }
             }
-            gameFinished = false;
         }
     }
 }

@@ -15,6 +15,7 @@ public class Deck {
                 }
             }
         }
+        this.shuffle();
     }
 
     public Card draw() throws EmptyDeckException {

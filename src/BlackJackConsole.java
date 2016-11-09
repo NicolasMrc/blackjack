@@ -1,4 +1,8 @@
+
+import com.sun.tools.javac.util.StringUtils;
+
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Nico on 07/11/2016.
@@ -7,22 +11,33 @@ public class BlackJackConsole {
     public  BlackJackConsole(){
         System.out.println("Welcolme to the BlackJack table. Let's play !");
 
-        Deck deck = new Deck(1);
-        System.out.println("Here is the deck :\n" + deck);
-        deck.shuffle();
-        System.out.println("Here is the deck shuffled :\n" + deck);
-        System.out.println();
+        BlackJack blackJack = new BlackJack();
 
-        Hand hand = new Hand();
+        System.out.println("The bank draw : " + blackJack.getBankHandString());
+        System.out.println("The player draw : " + blackJack.getPlayerHandString());
 
-        for(int i = 0; i < 6 ; i++) {
-            try {
-                hand.add(deck.draw());
-            } catch (EmptyDeckException e) {
-                System.exit(-1);
+        while(!blackJack.isGameFinished()){
+            String choice;
+            System.out.println("Do you want to draw another card ? [y/n]");
+            Scanner s = new Scanner(System.in);
+            choice = s.next();
+            if (choice.equalsIgnoreCase("y")){
+                blackJack.playerDrawAnotherCard();
+                System.out.println("The player draw : " + blackJack.getPlayerHandString());
+                if(blackJack.getPlayerBest() > 21){
+                    System.out.println("The bank win you went over 21 !");
+                }
+            } else if (choice.equalsIgnoreCase("n")){
+                blackJack.bankLastTurn();
+
             }
         }
-        System.out.print("Your hand is currently : \n" + hand);
+
+        if(blackJack.isBankWinner()){
+            System.out.println("The bank won !");
+        } else if (blackJack.isPlayerWinner()){
+            System.out.println("The player won !");
+        }
     }
 
     public static void main(String[] args){
