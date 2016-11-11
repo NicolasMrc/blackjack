@@ -1,7 +1,6 @@
 
-import com.sun.tools.javac.util.StringUtils;
+import BlackJack.BlackJack;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,7 +8,7 @@ import java.util.Scanner;
  */
 public class BlackJackConsole {
     public  BlackJackConsole(){
-        System.out.println("Welcolme to the BlackJack table. Let's play !");
+        System.out.println("Welcolme to the BlackJack.BlackJack table. Let's play !");
 
         BlackJack blackJack = new BlackJack();
 
