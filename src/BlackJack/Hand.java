@@ -4,11 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * La classe Hand
  * Created by Nico on 08/11/2016.
  */
 public class Hand {
+
+    /**
+     * la liste des cartes de la main
+     */
     private LinkedList<Card> cardList = new LinkedList<>();
 
+    /**
+     * methode renvoyant la main sous forme de String
+     * @return
+     *      la main en String
+     */
     public String toString(){
         String hand = "[";
         for(Card card : this.cardList){
@@ -31,14 +41,27 @@ public class Hand {
         return hand;
     }
 
+    /**
+     * permet d'ajouter une carte a la main
+     * @param card
+     *      la carte a ajouter
+     */
     public void add(Card card){
         this.cardList.add(card);
     }
 
+    /**
+     * permet de supprimer toute les cartes de la main
+     */
     public void clear(){
         this.cardList.clear();
     }
 
+    /**
+     * methode permettant de compter les points possibles d'une main
+     * @return
+     *      la list des poinst possible
+     */
     public List<Integer> count(){
         LinkedList<Integer> score = new LinkedList<>();
         score.add(0);
@@ -55,6 +78,11 @@ public class Hand {
         return score;
     }
 
+    /**
+     * permet de calculer les meilleurs points de la main
+     * @return
+     *      le meilleur score
+     */
     public Integer best(){
         Integer best = null;
         for(Integer points : this.count()){
@@ -71,6 +99,11 @@ public class Hand {
         return best;
     }
 
+    /**
+     * getter de la liste de carte
+     * @return
+     *      la list de carte
+     */
     public LinkedList<Card> getCardList() {
         return cardList;
     }
