@@ -11,19 +11,45 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 /**
+ * Panel d'affichage de la main de la bank
  * Created by Nico on 11/11/2016.
  */
 public class BankPanel extends JPanel {
 
+    /**
+     * constante de gris clair pour les fonts
+     */
     private java.awt.Color LIGHT_GREY = new java.awt.Color(183,183,183);
+
+    /**
+     * constante de bleu clair pour le bakcground
+     */
     private java.awt.Color LIGHT_BLUE = new java.awt.Color(44, 55, 72);
+
+    /**
+     * constante de bleu pour le background
+     */
     private java.awt.Color BLUE = new java.awt.Color(35, 42, 55);
+
+    /**
+     * la main de la banque
+     */
     private Hand bankHand;
 
+    /**
+     * constructeur de bankPanel
+     * @param bankHand
+     *      la main de la bank
+     */
     public BankPanel(BlackJack.Hand bankHand){
         this.bankHand = bankHand;
     }
 
+    /**
+     * methode apellée lorsque le panel est dessiné
+     * @param g
+     *      graphics
+     */
     public void paintComponent(Graphics g){
         g.setColor(this.LIGHT_BLUE);
         g.fillRect(0, 0, 1080, 360);
@@ -32,6 +58,10 @@ public class BankPanel extends JPanel {
         this.drawText(g);
     }
 
+    /**
+     * methode appelée pour afficher le nom de la bank en haut du panel
+     * @param g
+     */
     public void drawText(Graphics g){
         Graphics2D g2 = (Graphics2D)g;
         RenderingHints rh = new RenderingHints(

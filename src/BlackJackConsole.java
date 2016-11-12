@@ -4,9 +4,14 @@ import BlackJack.BlackJack;
 import java.util.Scanner;
 
 /**
+ * Classe d'interface console du blackjack
  * Created by Nico on 07/11/2016.
  */
 public class BlackJackConsole {
+
+    /**
+     * constructeur
+     */
     public  BlackJackConsole(){
         System.out.println("Welcolme to the BlackJack.BlackJack table. Let's play !");
 
@@ -39,6 +44,10 @@ public class BlackJackConsole {
         }
     }
 
+    /**
+     * main lancant le constructeur de la classe
+     * @param args
+     */
     public static void main(String[] args){
         new BlackJackConsole();
     }

@@ -1,6 +1,7 @@
 package BlackJack;
 
 /**
+ * Classe d'énumeration de valeurs
  * Created by Nico on 07/11/2016.
  */
 public enum Value {
@@ -18,18 +19,42 @@ public enum Value {
     QUEEN("Q", 10),
     KING("K", 10);
 
+    /**
+     * le symbole
+     */
     private String symbole;
+
+    /**
+     * le nombre de point
+     */
     private int points;
 
+    /**
+     * constructeur
+     * @param symbole
+     *      le symbole
+     * @param points
+     *      les points
+     */
     Value(String symbole, int points){
         this.symbole = symbole;
         this.points = points;
     }
 
+    /**
+     * le getter de symbole
+     * @return
+     *      le symbole
+     */
     public String getSymbole() {
         return symbole;
     }
 
+    /**
+     * le getrter de points
+     * @return
+     *      les points
+     */
     public int getPoints() {
         return points;
     }
