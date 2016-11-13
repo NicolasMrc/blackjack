@@ -21,6 +21,11 @@ public class PlayerPanel extends JPanel {
     private java.awt.Color LIGHT_BLUE = new java.awt.Color(44, 55, 72);
 
     /**
+     * constante de Color pour le bleu
+     */
+    private java.awt.Color BLUE = new java.awt.Color(35, 42, 55);
+
+    /**
      * la main du joueur
      */
     private Hand playerHand;
@@ -52,7 +57,7 @@ public class PlayerPanel extends JPanel {
      *      les graphics
      */
     public void drawCard(Graphics g){
-        g.setColor(new java.awt.Color(35, 42, 55));
+        g.setColor(this.BLUE);
         g.fillRect(0, 10, 1080, 230);
 
         LinkedList<Card> cards = this.playerHand.getCardList();

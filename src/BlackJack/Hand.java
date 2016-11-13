@@ -95,7 +95,6 @@ public class Hand {
             }
 
         }
-        System.out.println(this.toString() + " best :" + best);
         return best;
     }
 
