@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 /**
- * Panel de fin contenant les "cartes" de fin : winner, loose, blackjack
+ * Panel de fin contenant les "cartes" de fin : winner, loser, blackjack
  * Created by Nico on 11/11/2016.
  */
 public class EndPanel extends JPanel {

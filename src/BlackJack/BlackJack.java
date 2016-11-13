@@ -165,7 +165,6 @@ public class BlackJack {
             while(!this.isGameFinished()){
                 try{
                     this.bankHand.add(this.deck.draw());
-                    System.out.println("The bank draw : " + this.getBankHandString());
                 } catch (EmptyDeckException e){
                     System.out.println("Error, the deck has insuffisent cards");
                     System.exit(-1);
