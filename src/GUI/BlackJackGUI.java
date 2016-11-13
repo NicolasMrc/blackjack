@@ -244,6 +244,11 @@ public class BlackJackGUI implements ActionListener{
                 this.btnDraw.setEnabled(false);
                 table.add(initEndPanel(this.blackJack.getPlayerHand(), false, "blackjack"), BorderLayout.SOUTH);
                 table.add(initEndPanel(this.blackJack.getBankHand(), true, "loser"), BorderLayout.NORTH);
+            }  else if (blackJack.getBankBest() == blackJack.getPlayerBest()) {
+                this.btnStand.setEnabled(false);
+                this.btnDraw.setEnabled(false);
+                table.add(initEndPanel(this.blackJack.getBankHand(), true, "draw"), BorderLayout.NORTH);
+                table.add(initEndPanel(this.blackJack.getPlayerHand(), false, "draw"), BorderLayout.SOUTH);
             } else {
                 table.add(initPlayerPanel(), BorderLayout.SOUTH);
             }
@@ -260,7 +265,12 @@ public class BlackJackGUI implements ActionListener{
         if(!this.blackJack.isGameFinished()) {
             this.blackJack.bankLastTurn();
 
-            if (blackJack.getBankBest() > 21) {
+            if (blackJack.getBankBest() == blackJack.getPlayerBest()) {
+                this.btnStand.setEnabled(false);
+                this.btnDraw.setEnabled(false);
+                table.add(initEndPanel(this.blackJack.getBankHand(), true, "draw"), BorderLayout.NORTH);
+                table.add(initEndPanel(this.blackJack.getPlayerHand(), false, "draw"), BorderLayout.SOUTH);
+            } else if (blackJack.getBankBest() > 21) {
                 this.btnStand.setEnabled(false);
                 this.btnDraw.setEnabled(false);
                 table.add(initEndPanel(this.blackJack.getBankHand(), true, "loser"), BorderLayout.NORTH);
