@@ -1,5 +1,6 @@
 
 import BlackJack.BlackJack;
+import BlackJack.EmptyDeckException;
 
 import java.util.Scanner;
 
@@ -15,32 +16,36 @@ public class BlackJackConsole {
     public  BlackJackConsole(){
         System.out.println("Welcolme to the BlackJack.BlackJack table. Let's play !");
 
-        BlackJack blackJack = new BlackJack();
+        try{
+            BlackJack blackJack = new BlackJack();
 
-        System.out.println("The bank draw : " + blackJack.getBankHandString());
-        System.out.println("The player draw : " + blackJack.getPlayerHandString());
+            System.out.println("The bank draw : " + blackJack.getBankHandString());
+            System.out.println("The player draw : " + blackJack.getPlayerHandString());
 
-        while(!blackJack.isGameFinished()){
-            String choice;
-            System.out.println("Do you want to draw another card ? [y/n]");
-            Scanner s = new Scanner(System.in);
-            choice = s.next();
-            if (choice.equalsIgnoreCase("y")){
-                blackJack.playerDrawAnotherCard();
-                System.out.println("The player draw : " + blackJack.getPlayerHandString());
-                if(blackJack.getPlayerBest() > 21){
-                    System.out.println("The bank win you went over 21 !");
+            while(!blackJack.isGameFinished()){
+                String choice;
+                System.out.println("Do you want to draw another card ? [y/n]");
+                Scanner s = new Scanner(System.in);
+                choice = s.next();
+                if (choice.equalsIgnoreCase("y")){
+                    blackJack.playerDrawAnotherCard();
+                    System.out.println("The player draw : " + blackJack.getPlayerHandString());
+                    if(blackJack.getPlayerBest() > 21){
+                        System.out.println("The bank win you went over 21 !");
+                    }
+                } else if (choice.equalsIgnoreCase("n")){
+                    blackJack.bankLastTurn();
+
                 }
-            } else if (choice.equalsIgnoreCase("n")){
-                blackJack.bankLastTurn();
-
             }
-        }
 
-        if(blackJack.isBankWinner()){
-            System.out.println("The bank won !");
-        } else if (blackJack.isPlayerWinner()){
-            System.out.println("The player won !");
+            if(blackJack.isBankWinner()){
+                System.out.println("The bank won !");
+            } else if (blackJack.isPlayerWinner()){
+                System.out.println("The player won !");
+            }
+        } catch (EmptyDeckException e){
+            System.exit(-1);
         }
     }
 

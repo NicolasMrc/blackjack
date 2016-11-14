@@ -29,7 +29,7 @@ public class BlackJack {
     /**
      * constructeur de la classe blackjack
      */
-    public BlackJack(){
+    public BlackJack() throws EmptyDeckException{
         this.deck = new Deck(2);
         this.playerHand = new Hand();
         this.bankHand = new Hand();
@@ -40,19 +40,15 @@ public class BlackJack {
     /**
      * permet de reinitialiser une partie
      */
-    public void reset(){
+    public void reset() throws EmptyDeckException{
         this.bankHand.clear();
         this.playerHand.clear();
         this.gameFinished = false;
 
-        try {
-            this.bankHand.add(this.deck.draw());
-            this.playerHand.add(this.deck.draw());
-            this.playerHand.add(this.deck.draw());
-        } catch (EmptyDeckException e){
-            System.out.println("Error, the deck has insuffisent cards");
-            System.exit(-1);
-        }
+        this.bankHand.add(this.deck.draw());
+        this.playerHand.add(this.deck.draw());
+        this.playerHand.add(this.deck.draw());
+
     }
 
     /**
@@ -113,7 +109,7 @@ public class BlackJack {
      *  true si le joueur est gagnant
      */
     public boolean isPlayerWinner(){
-        if(this.getPlayerBest() <= 21 && ((this.getBankBest() < this.getPlayerBest() && (this.getBankBest() != 21 && this.getPlayerBest() != 21)) || this.getBankBest() > 21)){
+        if(this.getPlayerBest() <= 21 && ((this.getBankBest() <= this.getPlayerBest() && (this.getBankBest() != 21 && this.getPlayerBest() != 21)) || this.getBankBest() > 21)){
             return true;
         } else return false;
     }
@@ -124,7 +120,7 @@ public class BlackJack {
      *      true si la bank gagne
      */
     public boolean isBankWinner(){
-        if(this.getBankBest() <= 21 && ((this.getPlayerBest() < this.getBankBest() && (this.getPlayerBest() != 21 && this.getBankBest() != 21)) || this.getPlayerBest() > 21)){
+        if(this.getBankBest() <= 21 && ((this.getPlayerBest() <= this.getBankBest() && (this.getPlayerBest() != 21 && this.getBankBest() != 21)) || this.getPlayerBest() > 21)){
             return true;
         } else return false;
     }
